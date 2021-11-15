@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
 	public float speed = 15f;
+	public float cameraVelocity;
 	public float interpVelocity;
 	public float minDistance;
 	public float followDistance;
@@ -14,10 +15,9 @@ public class CameraFollow : MonoBehaviour
 	void Start()
 	{
 		targetPos = transform.position;
-	}
-
-	// Update is called once per frame
-	void FixedUpdate()
+    }
+    // Update is called once per frame
+    void FixedUpdate()
 	{
 		if (target)
 		{
