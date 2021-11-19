@@ -11,12 +11,9 @@ public class Bullet : MonoBehaviour
     public float piercingHealth;
     public Rigidbody2D rb;
 
-    private void Awake()
+    private void Start()
     {
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        rb.AddForce(new Vector3(worldPosition.x, worldPosition.y, 0f).normalized * speed);
+        rb.AddForce(transform.right * speed, ForceMode2D.Impulse);
     }
 
     private void Update()
