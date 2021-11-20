@@ -6,8 +6,10 @@ public class Gun : MonoBehaviour
 {
     public float fireRate;
     public float clipSize;
+    public float bulletsLeft;
     public float spread;
     public int bullets;
+    public float reloadTime;
     private float bulletSize;
     public GameObject selectedBullet;
     public Bullet bulletScript;
@@ -22,7 +24,9 @@ public class Gun : MonoBehaviour
 
     private void Awake()
     {
+        bulletSize = bulletScript.size;
         cam = FindObjectOfType<Camera>();
+        bulletsLeft = clipSize;
     }
     public void Update()
     {
@@ -54,7 +58,7 @@ public class Gun : MonoBehaviour
         }
 
         if (isFlipped)
-        { 
+        {
             if (transform.eulerAngles.z < 90 || transform.eulerAngles.z > 270)
             {
                 Flip();
@@ -63,10 +67,6 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
     public void Flip()
     {
         if (isFlipped)
@@ -77,7 +77,7 @@ public class Gun : MonoBehaviour
         {
             spriteRenderer.flipY = true;
         }
-                
+
     }
     public void Shoot()
     {
@@ -85,6 +85,24 @@ public class Gun : MonoBehaviour
         {
             GameObject bullet = Instantiate(selectedBullet, transform.position, transform.rotation);
             bullet.transform.Rotate(new Vector3(0, 0, Random.Range(-spread, spread)));
-        }   
+        }
+
+        bulletsLeft -= bulletSize;
+
+        if (bulletsLeft <= 0)
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+
+        yield return new WaitForSeconds(reloadTime);
+
+        bulletsLeft = clipSize;
+
+        isReloading = false;
     }
 }

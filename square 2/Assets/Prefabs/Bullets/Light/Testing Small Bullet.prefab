@@ -72,7 +72,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 1
+  m_Time: 0.6
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -81,7 +81,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.16374207
+        value: 0.0818634
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -102,7 +102,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0.36078432}
+      key0: {r: 0.6037736, g: 0.6037736, b: 0.6037736, a: 0.20392157}
       key1: {r: 1, g: 1, b: 1, a: 0.03529412}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 3127730169069259570}
   - component: {fileID: 9091338866307441660}
   m_Layer: 0
-  m_Name: Testing Bullet
+  m_Name: Testing Small Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 4111384049180042454}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.6752102, y: 0.19777352, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.3, z: 1}
   m_Children:
   - {fileID: 4045234060943841243}
   m_Father: {fileID: 0}
@@ -213,7 +213,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
+  m_Sprite: {fileID: 3625043607559282579, guid: 0d267bc78a0864eb48358689b29ed20a, type: 3}
   m_Color: {r: 1, g: 0.8481556, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,11 +236,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b4f6bac4751614da0b265aefdb229f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  damage: 25
-  size: 1
-  piercingDamage: 1
-  piercingHealth: 2
+  speed: 12
+  damage: 15
+  size: 0.5
+  piercingDamage: 0.5
+  piercingHealth: 1.5
+  lifetime: 1.8
+  enemyPiercing: 1
   rb: {fileID: 3127730169069259570}
 --- !u!50 &3127730169069259570
 Rigidbody2D:
@@ -280,12 +282,12 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
