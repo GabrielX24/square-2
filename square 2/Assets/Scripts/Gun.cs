@@ -7,6 +7,7 @@ public class Gun : MonoBehaviour
     public float fireRate;
     public float clipSize;
     public float spread;
+    public int bullets;
     private float bulletSize;
     public GameObject selectedBullet;
     public Bullet bulletScript;
@@ -80,7 +81,10 @@ public class Gun : MonoBehaviour
     }
     public void Shoot()
     {
-        GameObject bullet = Instantiate(selectedBullet, transform.position, transform.rotation);
+        for (int i = 0; i < bullets; i++)
+        {
+            GameObject bullet = Instantiate(selectedBullet, transform.position, transform.rotation);
+            bullet.transform.Rotate(new Vector3(0, 0, Random.Range(-spread, spread)));
+        }   
     }
-
 }
