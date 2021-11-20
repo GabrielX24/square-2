@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
     public float size;
     public float piercingDamage;
     public float piercingHealth;
+    public float lifetime = 20f;
+    public int enemyPiercing;
     public Rigidbody2D rb;
 
     private void Start()
@@ -18,7 +20,19 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        lifetime -= Time.deltaTime;
+
+        if (lifetime <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (piercingHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+
+        if (enemyPiercing <= 0)
         {
             Destroy(gameObject);
         }
@@ -28,6 +42,13 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("EnemyBullet"))
         {
             collision.gameObject.GetComponent<EnemyBullet>().piercingHealth -= piercingDamage;
+            collision.gameObject.GetComponent<EnemyBullet>().piercingHealth -= piercingDamage;
+        }
+
+        if (collision.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<TakeDamage>().takeDamage(damage);
+            enemyPiercing--;
         }
     }
 }
