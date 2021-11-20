@@ -11,6 +11,7 @@ public class CameraSizeChange : MonoBehaviour
     [Header("Values")]
     public float transitionSpeed = 1.5f;
     public float camReturnSize = 6f;
+    public float magnitudeModifier = 1f;
 
     void Update()
     {
